@@ -1,11 +1,17 @@
 class FavoritesWidget {
+  // создаёт объект
   constructor() {
+    // объект таблицы избранного
     this.favoritesTableBody = document.querySelector('table.table.addresses tbody');
+    // объект формы для добавления пользователя в избранное
     this.addUserToFavoritesForm = document.getElementById('addUser');
+    // объект окна для вывода сообщений
     this.favoritesMessageBox = document.getElementById('favoritesMessageBox');
     this.favoritesMessageBox.style.display = 'none';
 
+    // функция, которая будет выполняться при добавлении пользователя в избранное
     this.addUserCallback = (f) => f;
+    // функция, которая будет запускаться при попытке удаления пользователя из избранного
     this.removeUserCallback = (f) => f;
 
     this.addUserToFavoritesForm.querySelector('.button')
@@ -22,6 +28,7 @@ class FavoritesWidget {
     });
   }
 
+  //  принимает объект и заполняет таблицу данными
   fillTable(data) {
     Object.keys(data).forEach((key) => {
       const element = data[key];
@@ -38,16 +45,19 @@ class FavoritesWidget {
     });
   }
 
+  // очищает таблицу
   clearTable() {
     this.favoritesTableBody.innerHTML = '';
   }
 
+  // метод получения данных из формы добавления пользователя
   getData() {
     const id = this.addUserToFavoritesForm.querySelector("[placeholder='ID']").value;
     const name = this.addUserToFavoritesForm.querySelector("[placeholder='Имя']").value;
     return { id, name };
   }
 
+  // метод отображает сообщение (ошибку или успешность) в окне с информацией
   setMessage(isSuccess, message) {
     if (isSuccess) {
       this.favoritesMessageBox.className = 'ui message fluid success';

@@ -1,9 +1,11 @@
-
 class RatesBoard {
+  // создаёт объект
   constructor() {
+    // объект тела таблицы для данных
     this.tableBody = document.querySelector('table.table.rates tbody');
   }
 
+  // принимает объект и заполняет таблицу данными
   fillTable(data) {
     Object.keys(data).forEach((key) => {
       const element = data[key];
@@ -15,6 +17,7 @@ class RatesBoard {
     });
   }
 
+  // очищает таблицу
   clearTable() {
     this.tableBody.innerHTML = '';
   }
